@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Waitless.Models.DTOs.EventCardListViewModel>
+<div class="container">
+    <h1 class="mb-3">Events</h1>
+    <div class="d-flex flex-row gap-2">
+        @foreach (var singleEvent in Model)
+        {
+
+            <div class="card" style="width: 14rem;">
+                <img src="~/images/card-image.svg" class="card-img-top m-4" alt="..." style="width:11rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@singleEvent.EventName</h5>
+                    <p class="card-text">@singleEvent.EventDescription</p>
+                    <a class="btn btn-primary" asp-controller="Participant" asp-action="Add" asp-route-id="@singleEvent.EventId">Register Now</a>
+                </div>
+            </div>
+
+        }
+    </div>
+
+</div>

@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model List<Waitless.Models.Entities.Event>;
+
+<div class="d-flex justify-content-between">
+    <h1 class="mb-3">Event List</h1>
+    <a class="btn btn-primary align-content-center" asp-controller="Event" asp-action="Add" style="height:2.5rem;">+ Add new</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Initiator</th>
+            <th>Description</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var singleEvent in Model)
+        {
+            <tr>
+                <a href="www.google.com">
+                <td>@singleEvent.EventId</td>
+                <td>@singleEvent.EventName</td>
+                <td>@singleEvent.Initiator</td>
+                <td>@singleEvent.EventDescription</td>
+                <td>@singleEvent.StartTime</td>
+                <td>@singleEvent.EndTime</td></a>
+                <td><a class="btn btn-success" asp-controller="Event" asp-action="Edit" asp-route-id="@singleEvent.EventId">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Event" asp-action="Delete" asp-route-id="@singleEvent.EventId">Delete</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>

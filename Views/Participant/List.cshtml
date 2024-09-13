@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Waitless.Models.Entities.Participant>
+
+<div class="d-flex justify-content-between">
+    <h1 class="mb-3">Registration List</h1>
+    <a class="btn btn-primary align-content-center" asp-controller="Participant" asp-action="Add" style="height:2.5rem;">+ Add new</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Event ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var participant in Model)
+        {
+            <tr>
+                <a href="www.google.com">
+                <td>@participant.ParticipantId</td>
+                <td>@participant.Name</td>
+                <td>@participant.EmailId</td>
+                <td>@participant.PhoneNumber</td>
+                    @if (participant.IsComplete == false)
+                    {
+                    <td class="text-danger">Pending</td>
+                    }
+                    else
+                    {
+                    <td class="text-success">Completed</td>
+                    }
+                <td>@participant.EventId</td></a>
+
+            </tr>
+        }
+    </tbody>
+</table>
